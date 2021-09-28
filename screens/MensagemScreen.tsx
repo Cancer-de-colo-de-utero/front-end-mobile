@@ -29,8 +29,7 @@ const DATA = [
 ];
 const Item = ({ title, poster }) => (
   <View style={styles.card}>
-            <View style={styles.icon}>
-            </View>
+            <View style={styles.icon}/>
             <Text style={styles.title2}>Exame Pronto!</Text>
   </View>
 );
@@ -70,6 +69,7 @@ const styles = StyleSheet.create({
   },
   title2: {
     fontSize: 18,
+    marginHorizontal: 10
   },
   header: {
     height: '25%',
@@ -84,8 +84,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     color: '#FAFAFA',
-    width: '70%',
-    height: '25%',
+    width: 250,
+    height: 90,
     borderWidth: 1,
     borderColor: '#7CC3AA',
     borderRadius: 10,

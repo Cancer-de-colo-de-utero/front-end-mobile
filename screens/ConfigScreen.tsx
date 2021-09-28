@@ -12,7 +12,7 @@ export default function ConfigScreen({navigation}) {
   return (
     <View style={styles.container}>
     <View style={styles.container}>
-      <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+      <View style={{flexDirection: 'row', justifyContent: 'center', backgroundColor: '#F0F3F2'}}>
         <View style={styles.card}>
           <Text style={styles.title2}>Configuração 1</Text>
         </View>
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+    backgroundColor: '#F0F3F2'
   },
   title1: {
     fontSize: 24,
@@ -48,7 +49,8 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   svg: {
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    backgroundColor: '#F0F3F2'
   },
   card: {
     margin: 10,

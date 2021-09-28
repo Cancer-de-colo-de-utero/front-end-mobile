@@ -1,33 +1,72 @@
 import * as React from 'react';
-import { StyleSheet, Button } from 'react-native';
+import { StyleSheet, TextInput, Button } from 'react-native';
 import 'react-native-gesture-handler';
-import Header from '../components/Header';
 import { Text, View } from '../components/Themed';
-import MensagemSvg from '../assets/svg/mensagem.svg';
-import LottieView from 'lottie-react-native';
-import { ScrollView } from 'react-native-gesture-handler';
-import { useState, useEffect } from 'react';
-import Animated from 'react-native-reanimated';
+//svg
+import LoginSvg from '../assets/svg/login.svg';
+import LoginBottomSvg from '../assets/svg/loginbottom.svg';
+//formik
+import { Formik } from 'formik';
+//yup
+import * as yup from 'yup'
+import loginValidationSchema from '../constants/ValidationSchema/loginValidationSchema'
+//icons
+import { Ionicons } from '@expo/vector-icons';
+//components
+import ComponentButton from '../components/button';
+//axios api
+import api from '../services/api';
 
-export default function PerfilScreen({navigation}) {
+export default function LoginScreen({navigation}) {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Header/>
+      <View style={styles.svg}>
+        <LoginSvg/>
       </View>
-      <View>
-        <Text style={styles.title1}>Mensagens</Text>
-      </View>
-      <View style={styles.container}>
-          <View style={styles.card}>
-            <View style={styles.icon}>
-            </View>
-            <Text style={styles.title2}>Exame Pronto!</Text>
-          </View>
-      </View>
-      <View>
-        <MensagemSvg/>
-      </View>
+        <Formik
+            validationSchema={loginValidationSchema}
+            initialValues={{ cpf: "", senha: ""}}
+            onSubmit={values => {
+              console.log(values);
+            }}
+             >
+            {({ handleChange, handleBlur, handleSubmit, values, errors, touched, isValid }) => (
+              <>
+                <View style={{backgroundColor: '#FAFAFA' }}>
+                    <View style={styles.textIcon}>
+                        <Text style={styles.title1}>CPF</Text>
+                    </View>
+                    <TextInput
+                    placeholder="Insira seu CPF ou Cartão SUS"
+                    style={styles.textInput}
+                    onChangeText={handleChange('cpf')}
+                    onBlur={handleBlur('cpf')}
+                    value={values.cpf}
+                    keyboardType="number-pad"
+                    />
+                    {(errors.cpf && touched.cpf) &&
+                          <Text style={{ fontSize: 14, color: 'red', alignSelf: 'center' }}>{errors.cpf}</Text>
+                        }
+                    <View style={styles.textIcon}>
+                        <Text style={styles.title1}>Senha</Text>
+                    </View>
+                    <TextInput
+                    placeholder="Insira sua senha"
+                    style={styles.textInput}
+                    onChangeText={handleChange('senha')}
+                    onBlur={handleBlur('senha')}
+                    value={values.senha}
+                    secureTextEntry
+                    />
+                    {(errors.senha && touched.senha) &&
+                          <Text style={{ fontSize: 14, color: 'red', alignSelf: 'center'}}>{errors.senha}</Text>
+                        }
+                  <ComponentButton title="Acessar" onPress={handleSubmit} disabled={!isValid}></ComponentButton>
+                </View>
+              </>
+            )}
+          </Formik>
+            <LoginBottomSvg height="30%" width="100%"/>
     </View>
   );
 }
@@ -35,58 +74,44 @@ export default function PerfilScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     flexDirection: 'column',
+    backgroundColor: '#FAFAFA',
   },
   title1: {
     fontSize: 24,
-    paddingVertical: 33,
+    paddingVertical: 10,
+    paddingLeft: 40,
+    marginRight: 8,
+  },
+  title: {
+    fontSize: 20,
     fontWeight: 'bold',
   },
-  title2: {
-    fontSize: 18,
-  },
   header: {
-    height: '25%',
     width: '100%',
+    height: '40%',
   },
-  svg: {
-    alignSelf: 'flex-end'
+  textInput: {
+    fontSize: 16,
+    textAlign: 'left',
+    paddingStart: 15,
+    height: 45,
+    width: '80%',
+    alignSelf: 'center',
+    borderColor: '#585858',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: 10,
   },
-  card: {
+  textIcon: {
     flexDirection: 'row',
-    marginVertical: 20,
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    color: '#F0F3F2',
-    width: '70%',
-    height: '25%',
-    borderWidth: 1,
-    borderColor: '#7CC3AA',
-    borderRadius: 10,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 4,
-      height: 0,
-    },
-    shadowOpacity: 0.25,
-    elevation: 12,
-  },
-  icon: {
-    width: 100,
-    height: '100%',
-    backgroundColor: '#E3E3E3',
-    alignItems: 'center',
-    borderRadius: 10,
-  }
-});
-
-function getAllMensagens() {
-  throw new Error('Function not implemented.');
+    backgroundColor: '#FAFAFA' 
+},
+svg: {
+  alignSelf: 'flex-end',
+  height: "35%", 
+  width:"100%",
+  backgroundColor: '#FAFAFA'
 }
-/*<View style={styles.card}>
-            <View style={styles.icon}>
-            </View>
-            <Text style={styles.title2}>Exame Pronto!</Text>
-          </View>
-*/
+});

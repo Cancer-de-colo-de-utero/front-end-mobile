@@ -100,8 +100,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#383838',
-    backgroundColor: 'transparent'
+    color: '#fff',
+    backgroundColor: 'transparent',
+    textAlign: 'center',
+    marginEnd: '25%'
   },
   header: {
     flex: 1,
@@ -137,6 +139,23 @@ function ConfigNavigator() {
       <ConfigStack.Screen
         name="ConfigScreen"
         component={ConfigScreen}
+        options={{ 
+          headerTitle: 'Configurações',
+          headerStyle: {
+           backgroundColor: '#F4CBD0',
+           height: 160,
+           borderBottomLeftRadius: 50,
+           borderBottomRightRadius: 50,
+           elevation: 0,
+           shadowOpacity: 0,
+          },
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: '#383838',
+            fontSize: 22,
+          },
+          headerTitleAlign: 'center',
+  }}
       />
     </ConfigStack.Navigator>
   );
@@ -150,7 +169,23 @@ function MensagemNavigator() {
       <MensagemStack.Screen
         name="Mensagem"
         component={MensagemScreen}
-        options={{ headerTitle: 'Mensagens' }}
+        options={{ 
+          headerTitle: 'Mensagens',
+          headerStyle: {
+           backgroundColor: '#F4CBD0',
+           height: 160,
+           borderBottomLeftRadius: 50,
+           borderBottomRightRadius: 50,
+           elevation: 0,
+           shadowOpacity: 0,
+          },
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: '#383838',
+            fontSize: 22,
+          },
+          headerTitleAlign: 'center',
+  }}
       />
     </MensagemStack.Navigator>
   );
@@ -172,7 +207,7 @@ function PerfilNavigator() {
 
 const AcaoStack = createStackNavigator();
 
-function AcaoNavigator() {
+function AcaoNavigator({navigation}) {
   return (
     <AcaoStack.Navigator screenOptions={{ headerShown: true }}>
       <AcaoStack.Screen
@@ -201,7 +236,7 @@ function AcaoNavigator() {
         component={DetailScreen}
         options={{headerTitle: props => <Header {...props} />,
                       headerLeft: () => (
-                        <TouchableOpacity style={{marginHorizontal: 30, backgroundColor: 'transparent'}}>
+                        <TouchableOpacity  onPress={() => navigation.goBack() }style={{marginHorizontal: 30, backgroundColor: 'transparent'}}>
                           <View style={{backgroundColor: 'transparent'}}>
                             <Ionicons name='arrow-back' size={25} color="#383838"></Ionicons>
                           </View>

@@ -1,30 +1,37 @@
-import React, {useState} from 'react';
-import { StyleSheet, Animated, Image, Platform, ScrollView } from 'react-native';
+import React, {useRef} from 'react';
+import { StyleSheet, Animated, Image, Platform, ScrollView, ImageBackground, StatusBar } from 'react-native';
 import { Text, View } from '../components/Themed';
 import { HeaderImageScrollView,  TriggeringView } from 'react-native-image-header-scroll-view';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
 
 export default function DetailScreen({ route, navigation }) {
 
-  const [scrolly, setScrolly] = useState(new Animated.Value(0))
+  const offset = useRef(new Animated.Value(0)).current;
 
   const itemData = route.params.itemData;
+  const image = { uri: itemData.poster };
   
   const MIN_HEIGHT = Platform.OS === 'ios' ? 100 : 75;
   const MAX_HEIGHT = 350
 
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-              <View style={styles.header}>
-                <Text style={styles.title2}>{itemData.title}</Text>
-              </View>
-                <View style={styles.box}>
-                  <Text style={styles.body}>{itemData.body}</Text>
-                </View>
-      </View>
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <SafeAreaView>
+        <View style={styles.container}>
+          <StatusBar hidden />
+          <View style={styles.header}>
+          <ImageBackground source={image} style={styles.image} resizeMode='cover' />
+          </View>
+          <View style={styles.box}>
+            <ScrollView style={styles.scroll}>
+              <Text style={styles.title2}>{itemData.title}</Text>
+              <Text style={styles.body}>{itemData.body}</Text>
+            </ScrollView>
+          </View>
+        </View>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
@@ -38,29 +45,34 @@ const styles = StyleSheet.create({
     color: '#383838'
   },
   grediant: {
-    height: 150,
+    height: '100%',
     width: '80%',
     justifyContent: 'center',
     alignSelf: 'center'
   },  
   title2: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
     color: '#383838',
     flexDirection: 'column',
     textAlign: 'center',
+    marginVertical: 10,
+    alignSelf: 'auto',
   },
   box: {
-    height: 150,
-    width: '80%',
+    height: 450,
+    width: '85%',
     backgroundColor: '#fff',
     alignSelf: 'center',
     marginVertical: 30,
     borderRadius: 15,
-    padding: 20
+    padding: 20,
+  },
+  scroll: {
+    height: 1000,
   },
   body: {
-    fontSize: 16,
+    fontSize: 18,
     color: '#383838',
     flexDirection: 'column',
     textAlign: 'justify',
@@ -69,11 +81,17 @@ const styles = StyleSheet.create({
     height: 200,
     width: '100%',
     alignSelf: 'stretch',
-    resizeMode: 'cover',
     alignItems: 'center',
     backgroundColor: '#fff',
     borderBottomLeftRadius: 50,
     borderBottomRightRadius: 50,
+  },
+  image: {
+    height: 200,
+    alignSelf: 'stretch',
+    overflow: 'hidden',
+    borderBottomLeftRadius: 40,
+    borderBottomRightRadius: 40,
   },
 });
 
