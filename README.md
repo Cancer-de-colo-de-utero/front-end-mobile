@@ -17,7 +17,7 @@ Project is created with:
 ## Screenshots
 
 <div>
-  <img src="screenshot.png">
+  <img src="screenshots.png">
 </div>
 
 	
