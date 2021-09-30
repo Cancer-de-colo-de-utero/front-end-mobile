@@ -33,6 +33,20 @@ export default function LoginScreen({navigation}) {
             {({ handleChange, handleBlur, handleSubmit, values, errors, touched, isValid }) => (
               <>
                 <View style={{backgroundColor: '#FAFAFA' }}>
+                <View style={styles.textIcon}>
+                        <Text style={styles.title1}>Nome</Text>
+                    </View>
+                    <TextInput
+                    placeholder="Insira seu Nome"
+                    style={styles.textInput}
+                    onChangeText={handleChange('cpf')}
+                    onBlur={handleBlur('cpf')}
+                    value={values.cpf}
+                    keyboardType="number-pad"
+                    />
+                    {(errors.cpf && touched.cpf) &&
+                          <Text style={{ fontSize: 14, color: 'red', alignSelf: 'center' }}>{errors.cpf}</Text>
+                        }
                     <View style={styles.textIcon}>
                         <Text style={styles.title1}>CPF</Text>
                     </View>
@@ -51,7 +65,7 @@ export default function LoginScreen({navigation}) {
                         <Text style={styles.title1}>Senha</Text>
                     </View>
                     <TextInput
-                    placeholder="Insira sua senha"
+                    placeholder="**************"
                     style={styles.textInput}
                     onChangeText={handleChange('senha')}
                     onBlur={handleBlur('senha')}
@@ -61,7 +75,7 @@ export default function LoginScreen({navigation}) {
                     {(errors.senha && touched.senha) &&
                           <Text style={{ fontSize: 14, color: 'red', alignSelf: 'center'}}>{errors.senha}</Text>
                         }
-                  <ComponentButton title="Acessar" onPress={handleSubmit} disabled={!isValid}></ComponentButton>
+                  <ComponentButton title="Salvar" onPress={handleSubmit} disabled={!isValid}></ComponentButton>
                 </View>
               </>
             )}
