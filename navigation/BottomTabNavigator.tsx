@@ -74,7 +74,7 @@ export default function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Perfil"
-        component={MensagemNavigator}
+        component={PerfilNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="md-person" color={color} />,
         }}
