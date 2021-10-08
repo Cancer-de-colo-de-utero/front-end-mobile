@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
     backgroundColor: '#383838',
-    width: '80%',
-    height: '12%',
+    width: 300,
+    height: 60,
     borderRadius: 10,
   },
   text : {
