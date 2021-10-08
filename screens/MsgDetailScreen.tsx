@@ -5,7 +5,7 @@ import { HeaderImageScrollView,  TriggeringView } from 'react-native-image-heade
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
 
-export default function DetailScreen({ route, navigation }) {
+export default function MsgDetailScreen({ route, navigation }) {
 
   const offset = useRef(new Animated.Value(0)).current;
 
@@ -16,6 +16,8 @@ export default function DetailScreen({ route, navigation }) {
   const MAX_HEIGHT = 350
 
   return (
+    <SafeAreaProvider>
+      <SafeAreaView>
         <View style={styles.container}>
           <StatusBar hidden />
           <View style={styles.header}>
@@ -25,9 +27,12 @@ export default function DetailScreen({ route, navigation }) {
             <ScrollView style={styles.scroll}>
               <Text style={styles.title2}>{itemData.title}</Text>
               <Text style={styles.body}>{itemData.body}</Text>
+              <Text style={styles.nameus}>{itemData.us}</Text>
             </ScrollView>
           </View>
         </View>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
@@ -72,6 +77,13 @@ const styles = StyleSheet.create({
   body: {
     fontSize: 18,
     color: '#383838',
+    flexDirection: 'column',
+    textAlign: 'justify',
+  },
+  nameus: {
+    fontSize: 18,
+    marginVertical: 10,
+    color: '#0BFFA7',
     flexDirection: 'column',
     textAlign: 'justify',
   },

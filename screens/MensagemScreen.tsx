@@ -1,55 +1,58 @@
 import * as React from 'react';
-import { StyleSheet, Button, FlatList,  ImageBackground } from 'react-native';
+import { StyleSheet, Button, FlatList,  ImageBackground, Image } from 'react-native';
 import 'react-native-gesture-handler';
 import Header from '../components/Header';
 import { Text, View } from '../components/Themed';
 import MensagemSvg from '../assets/svg/mensagem.svg';
 import LottieView from 'lottie-react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { useState, useEffect } from 'react';
-import Animated from 'react-native-reanimated';
 
-const DATA = [
+const DATA2 = [
   {
     id: '1',
-    title: 'Medida 1',
+    title: 'Resultado do exame',
     location: 'Goias, Brasil',
+    body: 'O resultado do seu exame citopatológico (prevenção) está pronto. Procure sua Unidade de Saúde:',
+    us: 'Nome da unidade de saúde',
     date: 'data',
     poster:
-      'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1100&q=80',
+      'https://images.unsplash.com/photo-1518152006812-edab29b069ac?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
   },
   {
     id: '2',
-    title: 'Exame Pronto!',
-    body: 'Seu exame citopatológico',
+    title: 'Resultado do exame',
+    location: 'Goias, Brasil',
+    body: 'O resultado do seu exame citopatológico (prevenção) está pronto. Procure sua Unidade de Saúde:',
+    us: 'Nome da unidade de saúde',
     date: 'data',
     poster:
-      'https://images.unsplash.com/photo-1575503802870-45de6a6217c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80',
+      'https://images.unsplash.com/photo-1453847668862-487637052f8a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1476&q=80',
   }
 ];
-const Item = ({ title, poster }) => (
-  <View style={styles.card}>
-            <View style={styles.icon}/>
-            <Text style={styles.title2}>Exame Pronto!</Text>
-  </View>
-);
-
 
 export default function MensagemScreen({navigation}) {
 
-  const renderItem = ({ item, poster }) => (
-    <Item title={item.title} />
+  const Item = ({ item }) => (
+    <TouchableWithoutFeedback onPress={() => navigation.navigate('MsgDetails', {itemData: item})}>
+      <View style={styles.card}>
+        <View style={styles.icon}>
+          <Image source={{uri: item.poster}} style={styles.icon} resizeMode='cover'></Image>
+        </View>
+        <Text style={styles.title2}>{item.title}</Text>
+      </View>
+    </TouchableWithoutFeedback>
   );
 
   return (
     <View style={styles.container}>
       <View style={styles.container}>
           <FlatList
-            data={DATA}
-            renderItem={renderItem}
+            data={DATA2}
+            renderItem={Item}
             keyExtractor={item => item.id}/>
       </View>
-      <View>
+      <View style={styles.svg}>
         <MensagemSvg/>
       </View>
     </View>
@@ -61,6 +64,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     flexDirection: 'column',
+    backgroundColor: '#F0F3F2'
   },
   title1: {
     fontSize: 24,
@@ -69,14 +73,15 @@ const styles = StyleSheet.create({
   },
   title2: {
     fontSize: 18,
-    marginHorizontal: 10
+    margin: 15
   },
   header: {
     height: '25%',
     width: '100%',
   },
   svg: {
-    alignSelf: 'flex-end'
+    alignSelf: 'flex-end',
+    backgroundColor: '#F0F3F2'
   },
   card: {
     flexDirection: 'row',
@@ -84,7 +89,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     color: '#FAFAFA',
-    width: 250,
+    width: 300,
     height: 90,
     borderWidth: 1,
     borderColor: '#7CC3AA',
@@ -98,7 +103,7 @@ const styles = StyleSheet.create({
     elevation: 12,
   },
   icon: {
-    width: 100,
+    width: 95,
     height: '100%',
     backgroundColor: '#E3E3E3',
     alignItems: 'center',

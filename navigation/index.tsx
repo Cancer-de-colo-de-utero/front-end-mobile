@@ -6,7 +6,6 @@ import { ColorSchemeName } from 'react-native';
 import LoginScreen from '../screens/LoginScreen';
 import SliderScreen from '../screens/SliderScreen';
 import TermsScreen from '../screens/TermsScreen';
-import DetailScreen from '../screens/DetailScreen';
 
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';

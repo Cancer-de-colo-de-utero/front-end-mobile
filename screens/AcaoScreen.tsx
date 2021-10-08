@@ -118,7 +118,7 @@ export default function AcoesScreen({navigation}) {
           }
         }}
       >
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
           <StatusBar backgroundColor="#F4CBD0"/>
           <FlatList
             data={data}
@@ -208,7 +208,7 @@ export default function AcoesScreen({navigation}) {
             }}
           />
           <MedidasSvg width="100%"/>
-        </SafeAreaView>
+        </View>
       </FlingGestureHandler>
     </FlingGestureHandler>
   );
@@ -279,7 +279,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000',
     opacity: 0.6,
     borderBottomLeftRadius: 15,
-    borderBottomRightRadius: 15,
-    
+    borderBottomRightRadius: 15, 
   }
 });

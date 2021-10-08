@@ -3,8 +3,7 @@ import { StyleSheet, TextInput, Button } from 'react-native';
 import 'react-native-gesture-handler';
 import { Text, View } from '../components/Themed';
 //svg
-import LoginSvg from '../assets/svg/login.svg';
-import LoginBottomSvg from '../assets/svg/loginbottom.svg';
+import PerfilSvg from '../assets/svg/perfil.svg';
 //formik
 import { Formik } from 'formik';
 //yup
@@ -20,67 +19,66 @@ import api from '../services/api';
 export default function LoginScreen({navigation}) {
   return (
     <View style={styles.container}>
-      <View style={styles.svg}>
-        <LoginSvg/>
-      </View>
         <Formik
             validationSchema={loginValidationSchema}
-            initialValues={{ cpf: "", senha: ""}}
+            initialValues={{ nome: "",cpf: "", senha: ""}}
             onSubmit={values => {
               console.log(values);
             }}
              >
             {({ handleChange, handleBlur, handleSubmit, values, errors, touched, isValid }) => (
               <>
-                <View style={{backgroundColor: '#FAFAFA' }}>
+                <View style={{marginTop: '10%' }}>
                 <View style={styles.textIcon}>
                         <Text style={styles.title1}>Nome</Text>
                     </View>
-                    <TextInput
-                    placeholder="Insira seu Nome"
-                    style={styles.textInput}
-                    onChangeText={handleChange('cpf')}
-                    onBlur={handleBlur('cpf')}
-                    value={values.cpf}
-                    keyboardType="number-pad"
-                    />
-                    {(errors.cpf && touched.cpf) &&
-                          <Text style={{ fontSize: 14, color: 'red', alignSelf: 'center' }}>{errors.cpf}</Text>
-                        }
+                    <View style={{backgroundColor: '#F0F3F2' }}>
+                      <TextInput
+                        placeholder="Insira seu Nome"
+                        style={styles.textInput}
+                        onChangeText={handleChange('nome')}
+                        onBlur={handleBlur('nome')}
+                        value={values.nome}
+                        keyboardType='ascii-capable'
+                      />
+                    </View>
                     <View style={styles.textIcon}>
                         <Text style={styles.title1}>CPF</Text>
                     </View>
-                    <TextInput
-                    placeholder="Insira seu CPF ou Cartão SUS"
-                    style={styles.textInput}
-                    onChangeText={handleChange('cpf')}
-                    onBlur={handleBlur('cpf')}
-                    value={values.cpf}
-                    keyboardType="number-pad"
-                    />
-                    {(errors.cpf && touched.cpf) &&
-                          <Text style={{ fontSize: 14, color: 'red', alignSelf: 'center' }}>{errors.cpf}</Text>
-                        }
+                    <View style={{backgroundColor: '#F0F3F2' }}>
+                      <TextInput
+                      editable={false}
+                      placeholder="111.111.111-11"
+                      style={styles.textInput}
+                      onChangeText={handleChange('cpf')}
+                      onBlur={handleBlur('cpf')}
+                      value={values.cpf}
+                      keyboardType="number-pad"
+                      />
+                    </View>
                     <View style={styles.textIcon}>
                         <Text style={styles.title1}>Senha</Text>
                     </View>
-                    <TextInput
-                    placeholder="**************"
-                    style={styles.textInput}
-                    onChangeText={handleChange('senha')}
-                    onBlur={handleBlur('senha')}
-                    value={values.senha}
-                    secureTextEntry
-                    />
-                    {(errors.senha && touched.senha) &&
-                          <Text style={{ fontSize: 14, color: 'red', alignSelf: 'center'}}>{errors.senha}</Text>
-                        }
-                  <ComponentButton title="Salvar" onPress={handleSubmit} disabled={!isValid}></ComponentButton>
+                    <View style={{backgroundColor: '#F0F3F2' }}>
+                      <TextInput
+                      editable={false}
+                      placeholder="**************"
+                      style={styles.textInput}
+                      onChangeText={handleChange('senha')}
+                      onBlur={handleBlur('senha')}
+                      value={values.senha}
+                      secureTextEntry
+                      />
+                    </View>
+                  <View style={{backgroundColor: '#F0F3F2' }}>
+                    <ComponentButton title="Salvar" onPress={handleSubmit}></ComponentButton>
+                  </View>
+                  
                 </View>
               </>
             )}
           </Formik>
-            <LoginBottomSvg height="30%" width="100%"/>
+            <PerfilSvg height="40%" width="100%"/>
     </View>
   );
 }
@@ -89,7 +87,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: '#FAFAFA',
+    backgroundColor: '#F0F3F2',
   },
   title1: {
     fontSize: 24,
@@ -115,17 +113,17 @@ const styles = StyleSheet.create({
     borderColor: '#585858',
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 10,
+    backgroundColor: '#FAFAFA'
   },
   textIcon: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#FAFAFA' 
+    backgroundColor: '#F0F3F2' 
 },
 svg: {
   alignSelf: 'flex-end',
-  height: "35%", 
-  width:"100%",
-  backgroundColor: '#FAFAFA'
-}
+  justifyContent: 'center',
+  backgroundColor: '#F0F3F2',
+},
 });

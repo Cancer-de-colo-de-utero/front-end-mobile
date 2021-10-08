@@ -15,6 +15,7 @@ import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 import PerfilScreen from '../screens/PerfilScreen';
 import DetailScreen from '../screens/DetailScreen';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import MsgDetailScreen from '../screens/MsgDetailScreen';
 
 function Header() {
   return (
@@ -163,7 +164,7 @@ function ConfigNavigator() {
 
 const MensagemStack = createStackNavigator();
 
-function MensagemNavigator() {
+function MensagemNavigator({navigation}) {
   return (
     <MensagemStack.Navigator screenOptions={{ headerShown: true }}>
       <MensagemStack.Screen
@@ -185,7 +186,21 @@ function MensagemNavigator() {
             fontSize: 22,
           },
           headerTitleAlign: 'center',
-  }}
+        }}
+      />
+      <MensagemStack.Screen
+        name="MsgDetails"
+        component={MsgDetailScreen}
+        options={{headerTitle: props => <Header {...props} />,
+                      headerLeft: () => (
+                        <TouchableOpacity  onPress={() => navigation.goBack() }style={{marginHorizontal: 30, backgroundColor: 'transparent'}}>
+                          <View style={{backgroundColor: 'transparent'}}>
+                            <Ionicons name='arrow-back' size={25} color="#383838"></Ionicons>
+                          </View>
+                        </TouchableOpacity>
+                      ),
+                      headerTransparent: true,
+                    }}
       />
     </MensagemStack.Navigator>
   );
@@ -199,7 +214,23 @@ function PerfilNavigator() {
       <PerfilStack.Screen
         name="Perfil"
         component={PerfilScreen}
-        options={{ headerTitle: 'Peril' }}
+        options={{ 
+          headerTitle: 'Perfil',
+          headerStyle: {
+           backgroundColor: '#F4CBD0',
+           height: 160,
+           borderBottomLeftRadius: 50,
+           borderBottomRightRadius: 50,
+           elevation: 0,
+           shadowOpacity: 0,
+          },
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: '#383838',
+            fontSize: 22,
+          },
+          headerTitleAlign: 'center',
+        }}
       />
     </PerfilStack.Navigator>
   );
