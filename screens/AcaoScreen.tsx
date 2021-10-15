@@ -30,7 +30,7 @@ const DATA = [
     date: 'dd/mm/aa',
     body: 'É um tumor (multiplicação anormal das células) que se desenvolve na parte inferior do útero, chamada “colo”, que fica no fundo da vagina.',
     poster:
-      'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1100&q=80',
+      'http://200.137.215.76:8080/static/images/1531108562-huge.jpg',
   },
   {
     id: '2',
@@ -39,7 +39,7 @@ const DATA = [
     date: 'dd/mm/aa',
     body: 'Sim! Por meio da vacinação contra o HPV, antes do início da vida sexual, e do exame preventivo ( Exame citopatológico ou Papanicolaou).O uso do preservativo (camisinha) contribui para reduzir a transmissão do HPV. Essa proteção não é total, pois o vírus passa no contato íntimo durante as relações sexuais, mesmo sem penetração e entre pessoas do mesmo sexo.A vacina e o exame preventivo estão disponíveis na unidade básica de saúde próxima de sua casa. Tão importante quanto fazer o exame é buscar o resultado.',
     poster:
-      'https://images.unsplash.com/photo-1575503802870-45de6a6217c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80',
+      'http://200.137.215.76:8080/static/images/photo-1614308456595-a59d48697ea8.jpg',
   },
   {
     id: '3',
@@ -48,7 +48,7 @@ const DATA = [
     date: 'dd/mm/aa',
     body: 'É o exame do colo do útero para identificar possíveis lesões causadas pelo HPV. É colhido material do colo e enviado para análise no laboratório. O exame é simples e rápido. Em alguns casos, pode causar algum incômodo. A vacina protege contra os principais tipos de vírus HPV causadores do câncer do colo do útero, mas não todos. Portanto, mesmo vacinada é necessário fazer o exame preventivo na idade recomendada.',
     poster:
-      'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80',
+      'http://200.137.215.76:8080/static/images/shutterstock_1684318921.jpg',
   },
   {
     id: '4',
@@ -57,7 +57,7 @@ const DATA = [
     date: 'dd/mm/aa',
     body: 'Preferencialmente elas não devem estar menstruadas nem terem tido relação sexual ou feito uso de duchas ou lubrificantes vaginais nas 24 horas anteriores do exame.',
     poster:
-      'https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80',
+      'http://200.137.215.76:8080/static/images/shutterstock_1737944381.jpg',
   },
 ];
 
