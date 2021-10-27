@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 1,
-    backgroundColor: "#F4CBD0",
+    backgroundColor: "#FF9162",
     flexDirection: 'row',
     alignContent: 'center',
     justifyContent: 'space-between',
@@ -143,7 +143,7 @@ function ConfigNavigator() {
         options={{ 
           headerTitle: 'Configurações',
           headerStyle: {
-           backgroundColor: '#F4CBD0',
+           backgroundColor: '#FF7B42',
            height: 160,
            borderBottomLeftRadius: 50,
            borderBottomRightRadius: 50,
@@ -173,7 +173,7 @@ function MensagemNavigator({navigation}) {
         options={{ 
           headerTitle: 'Mensagens',
           headerStyle: {
-           backgroundColor: '#F4CBD0',
+           backgroundColor: '#FF7B42',
            height: 160,
            borderBottomLeftRadius: 50,
            borderBottomRightRadius: 50,
@@ -192,13 +192,6 @@ function MensagemNavigator({navigation}) {
         name="MsgDetails"
         component={MsgDetailScreen}
         options={{headerTitle: props => <Header {...props} />,
-                      headerLeft: () => (
-                        <TouchableOpacity  onPress={() => navigation.goBack() }style={{marginHorizontal: 30, backgroundColor: 'transparent'}}>
-                          <View style={{backgroundColor: 'transparent'}}>
-                            <Ionicons name='arrow-back' size={25} color="#383838"></Ionicons>
-                          </View>
-                        </TouchableOpacity>
-                      ),
                       headerTransparent: true,
                     }}
       />
@@ -217,7 +210,7 @@ function PerfilNavigator() {
         options={{ 
           headerTitle: 'Perfil',
           headerStyle: {
-           backgroundColor: '#F4CBD0',
+           backgroundColor: '#FF7B42',
            height: 160,
            borderBottomLeftRadius: 50,
            borderBottomRightRadius: 50,
@@ -247,7 +240,7 @@ function AcaoNavigator({navigation}) {
         options={{ 
                   headerTitle: 'Prevenção e promoção em Saúde',
                   headerStyle: {
-                   backgroundColor: '#F4CBD0',
+                   backgroundColor: '#FF7B42',
                    height: 160,
                    borderBottomLeftRadius: 50,
                    borderBottomRightRadius: 50,
@@ -266,13 +259,6 @@ function AcaoNavigator({navigation}) {
         name="Details"
         component={DetailScreen}
         options={{headerTitle: props => <Header {...props} />,
-                      headerLeft: () => (
-                        <TouchableOpacity  onPress={() => navigation.goBack() }style={{marginHorizontal: 30, backgroundColor: 'transparent'}}>
-                          <View style={{backgroundColor: 'transparent'}}>
-                            <Ionicons name='arrow-back' size={25} color="#383838"></Ionicons>
-                          </View>
-                        </TouchableOpacity>
-                      ),
                       headerTransparent: true,
                     }}
       />
