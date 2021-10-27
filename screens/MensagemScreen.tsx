@@ -17,7 +17,7 @@ const DATA2 = [
     us: 'Nome da unidade de saúde',
     date: 'data',
     poster:
-      'https://images.unsplash.com/photo-1518152006812-edab29b069ac?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
+      'C:/Users/vinic/Documents/GitHub/CCU_IC_2021/assets/images/55555.png',
   },
   {
     id: '2',
@@ -37,7 +37,7 @@ export default function MensagemScreen({navigation}) {
     <TouchableWithoutFeedback onPress={() => navigation.navigate('MsgDetails', {itemData: item})}>
       <View style={styles.card}>
         <View style={styles.icon}>
-          <Image source={{uri: item.poster}} style={styles.icon} resizeMode='cover'></Image>
+          <Image source={require('C:/Users/vinic/Documents/GitHub/CCU_IC_2021/assets/images/55555.png')} style={styles.icon} resizeMode='cover'></Image>
         </View>
         <Text style={styles.title2}>{item.title}</Text>
       </View>
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     width: 300,
     height: 90,
     borderWidth: 1,
-    borderColor: '#7CC3AA',
+    borderColor: '#FF7B42',
     borderRadius: 10,
     shadowColor: '#000000',
     shadowOffset: {
