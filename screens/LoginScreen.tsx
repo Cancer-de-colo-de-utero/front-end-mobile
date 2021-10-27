@@ -1,4 +1,5 @@
-import * as React from 'react';
+
+import React, { useCallback, useState } from 'react';
 import { StyleSheet, TextInput, Button } from 'react-native';
 import 'react-native-gesture-handler';
 import { Text, View } from '../components/Themed';
@@ -14,10 +15,23 @@ import loginValidationSchema from '../constants/ValidationSchema/loginValidation
 import { Ionicons } from '@expo/vector-icons';
 //components
 import ComponentButton from '../components/button';
+//Spinner
+import Spinner from 'react-native-loading-spinner-overlay';
 //axios api
-import api from '../services/api';
+import Axios, {setClientToken} from '../services/api';
+
 
 export default function LoginScreen({navigation}) {
+
+    const onSuccess = ({data}) => {
+      setClientToken(data.token);
+      console.log("logado!")
+    };
+
+    const onFailure = error => {
+      console.log(error && error.response);
+    };
+
   return (
     <View style={styles.container}>
       <View style={styles.svg}>
@@ -25,51 +39,52 @@ export default function LoginScreen({navigation}) {
       </View>
         <Formik
             validationSchema={loginValidationSchema}
-            initialValues={{ cpf: "", senha: ""}}
+            initialValues={{ username: "", password: ""}}
             onSubmit={values => {
-              console.log(values);
-              navigation.navigate("Root")
+              Axios.post('authenticate', {username: values.username, password: values.password})
+              .then(onSuccess)
+              .catch(onFailure);
             }}
              >
             {({ handleChange, handleBlur, handleSubmit, values, errors, touched, isValid }) => (
               <>
                 <View style={{backgroundColor: '#FAFAFA' }}>
                     <View style={styles.textIcon}>
-                        <Text style={styles.title1}>CPF</Text>
+                        <Text style={styles.title1}>username</Text>
                         <Ionicons name='globe-outline' size={25} color="#383838"></Ionicons>
                     </View>
                     <TextInput
-                    placeholder="Insira seu CPF ou Cartão SUS"
+                    placeholder="Insira seu username ou Cartão SUS"
                     style={styles.textInput}
-                    onChangeText={handleChange('cpf')}
-                    onBlur={handleBlur('cpf')}
-                    value={values.cpf}
+                    onChangeText={handleChange('username')}
+                    onBlur={handleBlur('username')}
+                    value={values.username}
                     keyboardType="number-pad"
                     />
-                    {(errors.cpf && touched.cpf) &&
-                          <Text style={{ fontSize: 14, color: 'red', alignSelf: 'center' }}>{errors.cpf}</Text>
+                    {(errors.username && touched.username) &&
+                          <Text style={{ fontSize: 14, color: 'red', alignSelf: 'center' }}>{errors.username}</Text>
                         }
                     <View style={styles.textIcon}>
-                        <Text style={styles.title1}>Senha</Text>
+                        <Text style={styles.title1}>password</Text>
                         <Ionicons name='lock-closed' size={25} color="#383838"></Ionicons>
                     </View>
                     <TextInput
-                    placeholder="Insira sua senha"
+                    placeholder="Insira sua password"
                     style={styles.textInput}
-                    onChangeText={handleChange('senha')}
-                    onBlur={handleBlur('senha')}
-                    value={values.senha}
+                    onChangeText={handleChange('password')}
+                    onBlur={handleBlur('password')}
+                    value={values.password}
                     secureTextEntry
                     />
-                    {(errors.senha && touched.senha) &&
-                          <Text style={{ fontSize: 14, color: 'red', alignSelf: 'center'}}>{errors.senha}</Text>
+                    {(errors.password && touched.password) &&
+                          <Text style={{ fontSize: 14, color: 'red', alignSelf: 'center'}}>{errors.password}</Text>
                         }
                   <ComponentButton title="Acessar" onPress={handleSubmit} disabled={!isValid}></ComponentButton>
                 </View>
               </>
             )}
           </Formik>
-            <LoginBottomSvg height="30%" width="100%"/>
+            <LoginBottomSvg height="37%" width="100%"/>
     </View>
   );
 }
@@ -92,7 +107,7 @@ const styles = StyleSheet.create({
   },
   header: {
     width: '100%',
-    height: '40%',
+    height: '43%',
   },
   textInput: {
     fontSize: 16,
@@ -118,3 +133,5 @@ svg: {
   backgroundColor: '#FAFAFA'
 }
 });
+
+export default LoginScreen;
