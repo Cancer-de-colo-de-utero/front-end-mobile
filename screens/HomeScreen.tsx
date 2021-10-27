@@ -90,7 +90,7 @@ export default function HomeScreen({navigation, item}) {
   return (
     
     <>
-    <StatusBar backgroundColor="#F4CBD0"/>
+    <StatusBar backgroundColor="#FF9162"/>
     <View style={styles.container}>
       <View style={styles.header}>
         <Header/>

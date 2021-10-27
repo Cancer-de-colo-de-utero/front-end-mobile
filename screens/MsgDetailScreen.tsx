@@ -16,8 +16,6 @@ export default function MsgDetailScreen({ route, navigation }) {
   const MAX_HEIGHT = 350
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView>
         <View style={styles.container}>
           <StatusBar hidden />
           <View style={styles.header}>
@@ -31,8 +29,6 @@ export default function MsgDetailScreen({ route, navigation }) {
             </ScrollView>
           </View>
         </View>
-      </SafeAreaView>
-    </SafeAreaProvider>
   );
 }
 

@@ -119,7 +119,7 @@ export default function AcoesScreen({navigation}) {
         }}
       >
         <View style={styles.container}>
-          <StatusBar backgroundColor="#F4CBD0"/>
+          <StatusBar backgroundColor="#FF7B42"/>
           <FlatList
             data={data}
             keyExtractor={(_, index) => String(index)}
