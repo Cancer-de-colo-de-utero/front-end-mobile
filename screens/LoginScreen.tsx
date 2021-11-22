@@ -133,5 +133,3 @@ svg: {
   backgroundColor: '#FAFAFA'
 }
 });
-
-export default LoginScreen;
