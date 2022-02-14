@@ -1,9 +1,6 @@
 import React, {useRef} from 'react';
 import { StyleSheet, Animated, Image, Platform, ScrollView, ImageBackground, StatusBar } from 'react-native';
 import { Text, View } from '../components/Themed';
-import { HeaderImageScrollView,  TriggeringView } from 'react-native-image-header-scroll-view';
-import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
-import LinearGradient from 'react-native-linear-gradient';
 
 export default function DetailScreen({ route, navigation }) {
 
@@ -22,8 +19,8 @@ export default function DetailScreen({ route, navigation }) {
           <ImageBackground source={image} style={styles.image} resizeMode='cover' />
           </View>
           <View style={styles.box}>
+            <Text style={styles.title2}>{itemData.title}</Text>
             <ScrollView style={styles.scroll}>
-              <Text style={styles.title2}>{itemData.title}</Text>
               <Text style={styles.body}>{itemData.body}</Text>
             </ScrollView>
           </View>
@@ -63,7 +60,7 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     borderRadius: 15,
     padding: 20,
-    borderColor: '#7CC3AA',
+    borderColor: '#FF9162',
     borderWidth: 1
   },
   scroll: {
