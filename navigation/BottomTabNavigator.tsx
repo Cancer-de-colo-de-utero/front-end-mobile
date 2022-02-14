@@ -7,7 +7,6 @@ import ConfigHeader from '../components/Header';
 import { Text, View } from '../components/Themed';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import ConfigScreen from '../screens/ConfigScreen';
 import HomeScreen from '../screens/HomeScreen';
 import MensagemScreen from '../screens/MensagemScreen';
 import AcaoScreen from '../screens/AcaoScreen';
@@ -57,13 +56,6 @@ export default function BottomTabNavigator() {
         component={AcaoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-medkit" color={color} />,
-        }}
-      />
-      <BottomTab.Screen
-        name="Settings"
-        component={ConfigNavigator}
-        options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-settings" color={color} />,
         }}
       />
       <BottomTab.Screen
@@ -133,34 +125,6 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
 const ConfigStack = createStackNavigator();
-
-function ConfigNavigator() {
-  return (
-    <ConfigStack.Navigator screenOptions={{ headerShown: true }}>
-      <ConfigStack.Screen
-        name="ConfigScreen"
-        component={ConfigScreen}
-        options={{ 
-          headerTitle: 'Configurações',
-          headerStyle: {
-           backgroundColor: '#FF7B42',
-           height: 160,
-           borderBottomLeftRadius: 50,
-           borderBottomRightRadius: 50,
-           elevation: 0,
-           shadowOpacity: 0,
-          },
-          headerTitleStyle: {
-            fontWeight: 'bold',
-            color: '#383838',
-            fontSize: 22,
-          },
-          headerTitleAlign: 'center',
-  }}
-      />
-    </ConfigStack.Navigator>
-  );
-}
 
 const MensagemStack = createStackNavigator();
 
